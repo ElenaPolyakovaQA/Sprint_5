@@ -1,0 +1,7 @@
+LOGIN_BUTTON = ('css selector', 'button[class*="auth-form__login-button"]')
+REGISTER_LINK = ('css selector', 'a[class*="auth-form__register-link"]')
+EMAIL_INPUT = ('css selector', 'input[name="email"]')
+PASSWORD_INPUT = ('css selector', 'input[name="password"]')
+REPEAT_PASSWORD_INPUT = ('css selector', 'input[name="repeat_password"]')
+SUBMIT_BUTTON = ('css selector', 'button[type="submit"]')
+ERROR_MESSAGE = ('css selector', 'div[class*="auth-form__error"]')

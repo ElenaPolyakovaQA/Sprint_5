@@ -1,0 +1,9 @@
+[
+  "tests/test_auth.py::TestAuth::test_logout",
+  "tests/test_auth.py::TestAuth::test_successful_login",
+  "tests/test_create_ad.py::TestCreateAd::test_create_ad_authorized",
+  "tests/test_create_ad.py::TestCreateAd::test_create_ad_unauthorized",
+  "tests/test_registration.py::TestRegistration::test_existing_user_registration",
+  "tests/test_registration.py::TestRegistration::test_invalid_email_registration",
+  "tests/test_registration.py::TestRegistration::test_successful_registration"
+]

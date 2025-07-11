@@ -1,0 +1,9 @@
+{
+  "tests/test_auth.py::TestAuth::test_successful_login": true,
+  "tests/test_auth.py::TestAuth::test_logout": true,
+  "tests/test_create_ad.py::TestCreateAd::test_create_ad_unauthorized": true,
+  "tests/test_create_ad.py::TestCreateAd::test_create_ad_authorized": true,
+  "tests/test_registration.py::TestRegistration::test_successful_registration": true,
+  "tests/test_registration.py::TestRegistration::test_invalid_email_registration": true,
+  "tests/test_registration.py::TestRegistration::test_existing_user_registration": true
+}

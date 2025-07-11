@@ -1,5 +1,6 @@
-CREATE_AD_BUTTON = ('css selector', 'button[class*="header__create-button"]')
-USER_AVATAR = ('css selector', 'div[class*="header__user-avatar"]')
-USERNAME = ('css selector', 'span[class*="header__user-name"]')
-LOGOUT_BUTTON = ('css selector', 'button[class*="header__logout-button"]')
-LOGIN_MODAL = ('css selector', 'div[class*="auth-modal__container"]')
+from selenium.webdriver.common.by import By
+
+CREATE_AD_BUTTON = (By.XPATH, '//button[contains(., "Разместить объявление")]')
+LOGIN_MODAL = (By.CSS_SELECTOR, '.auth-modal')
+MODAL_TITLE = (By.CSS_SELECTOR, '.modal-title')
+LOGOUT_BUTTON = (By.XPATH, '//button[contains(., "Выйти")]')

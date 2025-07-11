@@ -1,4 +1,6 @@
+from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import Select
+from selenium.common.exceptions import TimeoutException
 from locators.profile_locators import *
 
 class ProfilePage:
@@ -7,21 +9,23 @@ class ProfilePage:
         self.wait = wait
 
     def create_ad(self, title, description, price, category, city, condition):
-        self.browser.find_element(*AD_TITLE_INPUT).send_keys(title)
-        self.browser.find_element(*AD_DESCRIPTION_INPUT).send_keys(description)
-        self.browser.find_element(*AD_PRICE_INPUT).send_keys(price)
+        self.browser.find_element(*AD_TITLE).send_keys(title)
+        self.browser.find_element(*AD_DESCRIPTION).send_keys(description)
+        self.browser.find_element(*AD_PRICE).send_keys(price)
         
-        Select(self.browser.find_element(*AD_CATEGORY_DROPDOWN)).select_by_visible_text(category)
-        Select(self.browser.find_element(*AD_CITY_DROPDOWN)).select_by_visible_text(city)
+        Select(self.browser.find_element(*AD_CATEGORY)).select_by_visible_text(category)
+        Select(self.browser.find_element(*AD_CITY)).select_by_visible_text(city)
         
         if condition == "new":
-            self.browser.find_element(*AD_CONDITION_RADIO_NEW).click()
+            self.browser.find_element(*AD_CONDITION_NEW).click()
         else:
-            self.browser.find_element(*AD_CONDITION_RADIO_USED).click()
+            self.browser.find_element(*AD_CONDITION_USED).click()
         
         self.browser.find_element(*PUBLISH_BUTTON).click()
-        self.wait.until(lambda d: d.find_element(*MY_ADS_SECTION).is_displayed())
 
     def is_ad_displayed(self, title):
-        ads = self.wait.until(lambda d: d.find_elements(*AD_ITEM))
-        return any(title in ad.text for ad in ads)
+        try:
+            ads = self.wait.until(EC.visibility_of_all_elements_located(AD_ITEM))
+            return any(title in ad.text for ad in ads)
+        except TimeoutException:
+            return False

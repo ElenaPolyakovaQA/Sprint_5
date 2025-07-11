@@ -5,8 +5,5 @@
   "tests/test_create_ad.py::TestCreateAd::test_create_ad_authorized": true,
   "tests/test_registration.py::TestRegistration::test_successful_registration": true,
   "tests/test_registration.py::TestRegistration::test_invalid_email_registration": true,
-  "tests/test_registration.py::TestRegistration::test_existing_user_registration": true,
-  "tests/test_auth.py::TestAuth": true,
-  "tests/test_create_ad.py::TestCreateAd": true,
-  "tests/test_registration.py::TestRegistration": true
+  "tests/test_registration.py::TestRegistration::test_existing_user_registration": true
 }

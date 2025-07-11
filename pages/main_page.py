@@ -1,3 +1,5 @@
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.common.exceptions import TimeoutException
 from locators.main_locators import *
 
 class MainPage:
@@ -5,20 +7,20 @@ class MainPage:
         self.browser = browser
         self.wait = wait
 
-    def is_user_logged_in(self):
-        avatar_visible = self.wait.until(lambda d: d.find_element(*USER_AVATAR).is_displayed())
-        username_visible = self.wait.until(lambda d: d.find_element(*USERNAME).is_displayed())
-        return avatar_visible and username_visible
-
-    def logout(self):
-        self.browser.find_element(*LOGOUT_BUTTON).click()
-        self.wait.until(lambda d: d.find_element(*LOGIN_BUTTON).is_displayed())
-
-    def is_login_button_displayed(self):
-        return self.wait.until(lambda d: d.find_element(*LOGIN_BUTTON).is_displayed())
-
     def open_create_ad_form(self):
-        self.browser.find_element(*CREATE_AD_BUTTON).click()
+        self.wait.until(EC.element_to_be_clickable(CREATE_AD_BUTTON)).click()
 
     def is_login_modal_displayed(self):
-        return self.wait.until(lambda d: d.find_element(*LOGIN_MODAL).is_displayed())
+        try:
+            return self.wait.until(EC.visibility_of_element_located(LOGIN_MODAL)).is_displayed()
+        except TimeoutException:
+            return False
+
+    def is_login_button_displayed(self):
+        try:
+            return self.wait.until(EC.visibility_of_element_located(LOGIN_BUTTON)).is_displayed()
+        except TimeoutException:
+            return False
+
+    def get_modal_title(self):
+        return self.wait.until(EC.visibility_of_element_located(MODAL_TITLE)).text

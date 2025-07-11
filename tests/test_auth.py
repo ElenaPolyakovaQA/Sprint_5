@@ -9,6 +9,7 @@ class TestAuth:
         
         auth_page.open_login_form()
         auth_page.login_user(test_user["email"], test_user["password"])
+        
         assert main_page.is_user_logged_in()
 
     def test_logout(self, browser, wait, test_user):
@@ -17,5 +18,6 @@ class TestAuth:
         
         auth_page.open_login_form()
         auth_page.login_user(test_user["email"], test_user["password"])
-        main_page.logout()
+        auth_page.logout()
+        
         assert main_page.is_login_button_displayed()
